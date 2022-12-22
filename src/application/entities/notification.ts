@@ -1,20 +1,19 @@
-export interface NotifictionProps {
+export interface NotificationProps {
+  recipientId: string;
   content: string;
   category: string;
+  readAt?: Date | null;
+  createdAt: Date;
 }
 
 export class Notification {
-  private props: NotifictionProps;
+  private props: NotificationProps;
 
-  constructor() {
-    this.content = '';
+  constructor(props: NotificationProps) {
+    this.props = props;
   }
 
   public set content(content: string) {
-    if (content.length < 5) {
-      throw new Error();
-    }
-
     this.props.content = content;
   }
 
@@ -22,7 +21,3 @@ export class Notification {
     return this.props.content;
   }
 }
-
-const notifiction = new Notification();
-
-notifiction.content = 'asdasdasdsad';
